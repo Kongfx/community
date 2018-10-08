@@ -1,0 +1,13 @@
+server:
+  port: 8900
+spring:
+  profiles:
+    active: dev
+  application:
+    name: consumer-order
+user:
+   url: http://localhost:7900/user/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:123@localhost:1111/eureka/

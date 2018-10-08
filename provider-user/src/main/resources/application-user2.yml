@@ -1,0 +1,11 @@
+server:
+  port: 7902
+spring:
+  application:
+    name: provider-user2
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:123@localhost:1111/eureka/
+  instance:
+    prefer-ip-address: true

@@ -1,0 +1,12 @@
+#单机版配置
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 1111
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://user:123@localhost:1111/eureka/

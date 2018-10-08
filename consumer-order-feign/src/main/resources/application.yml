@@ -1,0 +1,23 @@
+server:
+  port: 8901
+spring:
+  application:
+    name: consumer-order-feign
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:123@localhost:1111/eureka/
+  instance:
+    prefer-ip-address: true
+
+#可采用配置文件方式配置对应服务的负载均衡算法
+#PROVIDER-USER1:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+
+
+
+#提供者服务地址
+#user:
+#   url: http://localhost:7900/user/
