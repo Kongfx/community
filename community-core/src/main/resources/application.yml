@@ -1,0 +1,5 @@
+server:
+  port: 8990
+spring:
+  application:
+    name: community-core
