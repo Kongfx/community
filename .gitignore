@@ -23,3 +23,14 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+/mvnw
+/mvnw.cmd
+api-gateway/target/
+community-core/target/
+consumer-order-feign/target/
+consumer-order-rabbin/target/
+consumer-order/target/
+eureka-server/src/test/
+eureka-server/target/
+provider-user/target/
+/.mvn/
