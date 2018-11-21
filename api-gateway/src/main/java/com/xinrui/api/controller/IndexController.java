@@ -9,8 +9,7 @@ public class IndexController {
 
     @RequestMapping(value = "/index")
     public String index(Model model){
-        model.addAttribute("msg", "后台返回值9999!");
-        return "index";
+        return "index_v1.html";
     }
 
 }

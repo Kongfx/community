@@ -1,26 +1,19 @@
 server:
-  port: 8092
+  port: 10900
 spring:
   application:
     name: api-gateway
-  thymeleaf:
-#    mode: HTML5
-    mode: LEGACYHTML5
-    cache: false
-    check-template-location: true
-    encoding: utf-8
-    enabled: true
-    prefix: classpath:/templates/
-    suffix: .html
-    content-type: text/html
-#  mvc:
-#    view:
-#      prefix: /templates
-
-
-# Comma-separated list of view names that should be excluded from resolution.
-#spring.thymeleaf.excluded-view-names=
-# Order of the template resolver in the chain.
-#spring.thymeleaf.templat-order=e-resolver
-# Comma-separated list of view names that can be resolved.
-#spring.thymeleaf.view-names=
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:123@localhost:1111/eureka/
+  instance:
+    prefer-ip-address: true
+security:
+  user:
+    password: 123
+    name: user
+zuul:
+  routes:
+    provider-user1: /pro/** #给制定的服务做映射 当前给provider-user1 添加映射为abc
+  ignored-services:
