@@ -33,4 +33,5 @@ consumer-order/target/
 eureka-server/src/test/
 eureka-server/target/
 provider-user/target/
-/.mvn/
+community-web/target/
+community-admin/target/

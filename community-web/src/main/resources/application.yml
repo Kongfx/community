@@ -1,0 +1,26 @@
+server:
+  port: 8095
+spring:
+  application:
+    name: community-web
+  thymeleaf:
+#    mode: HTML5
+    mode: LEGACYHTML5
+    cache: false
+    check-template-location: true
+    encoding: utf-8
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+    content-type: text/html
+#  mvc:
+#    view:
+#      prefix: /templates
+
+
+# Comma-separated list of view names that should be excluded from resolution.
+#spring.thymeleaf.excluded-view-names=
+# Order of the template resolver in the chain.
+#spring.thymeleaf.templat-order=e-resolver
+# Comma-separated list of view names that can be resolved.
+#spring.thymeleaf.view-names=
