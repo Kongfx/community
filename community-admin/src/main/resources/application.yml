@@ -1,0 +1,39 @@
+server:
+  port: 8901
+spring:
+  application:
+    name: admin
+  thymeleaf:
+#    mode: HTML5
+    mode: LEGACYHTML5
+    cache: false
+    check-template-location: true
+    encoding: utf-8
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+    content-type: text/html
+  datasource:
+      url: jdbc:mysql://127.0.0.1:3306/community_admin?useSSL=false&autoReconnect=true&tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root@mysql
+      driver-class-name: com.mysql.jdbc.Driver
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:123@localhost:1111/eureka/
+  instance:
+    prefer-ip-address: true
+#MybatiesPlus Config
+mybatis-plus:
+  mapper-locations: classpath*:com/xinrui/admin/mapper/*.xml
+  type-aliases-package: com.xinrui.admin.dto
+  global-config:
+    id-type: 0
+    db-column-underline: true
+    refresh-mapper: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    lazy-loading-enabled: true
+
