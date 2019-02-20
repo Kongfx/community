@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author kongfx
- * @since 2019-01-12
+ * @since 2019-02-20
  */
 @RestController
 @RequestMapping("/user")

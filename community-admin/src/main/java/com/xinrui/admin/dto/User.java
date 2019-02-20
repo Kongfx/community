@@ -15,7 +15,7 @@ import java.util.Date;
  * </p>
  *
  * @author kongfx
- * @since 2019-01-12
+ * @since 2019-02-20
  */
 @Data
 @Accessors(chain = true)
@@ -29,9 +29,17 @@ public class User implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
+     * 账号
+     */
+    private String username;
+    /**
      * 姓名
      */
     private String name;
+    /**
+     * 年龄
+     */
+    private Integer age;
     /**
      * 手机号
      */
@@ -47,7 +55,11 @@ public class User implements Serializable {
     /**
      * 经过MD5加密的密码
      */
-    private String passwd;
+    private String password;
+    /**
+     * md5密码盐
+     */
+    private String salt;
     /**
      * 头像图片
      */

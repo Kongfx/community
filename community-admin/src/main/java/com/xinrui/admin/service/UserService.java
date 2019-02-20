@@ -9,8 +9,11 @@ import com.baomidou.mybatisplus.service.IService;
  * </p>
  *
  * @author kongfx
- * @since 2019-01-12
+ * @since 2019-02-20
  */
 public interface UserService extends IService<User> {
 
+	User findByUsername(String username);
+
+	void addAge();
 }
