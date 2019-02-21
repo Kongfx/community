@@ -1,5 +1,7 @@
 package com.xinrui.admin.controller;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +28,27 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String shiro(HttpServletRequest request, Model model){
-		// 登录失败从request中获取shiro处理的异常信息。shiroLoginFailure:就是shiro异常类的全类名.
-		Object exception = request.getAttribute("shiroLoginFailure");
+	public String shiro(HttpServletRequest request, Model model, String username,String password){
+		// 在认证提交前准备 token（令牌）
+		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+		StringBuffer msg = null;
+		// 执行认证登陆
+		try {
+			// 从SecurityUtils里边创建一个 subject
+			SecurityUtils.getSubject().login(token);
+			msg = new StringBuffer("登陆成功！");
+		} catch (UnknownAccountException ex) {
+			msg = new StringBuffer("账号：" + username + "，不存在！");
+		} catch (IncorrectCredentialsException ex) {
+			msg = new StringBuffer("账号：" + username + "，密码输入错误！");
+		} catch (ExcessiveAttemptsException ex) {
+			msg = new StringBuffer("账号：" + username + "，登录失败次数过多！");
+		} catch (ExpiredCredentialsException ex) {
+			msg = new StringBuffer("账号：" + username + "，凭证过期！");
+		}catch (AuthenticationException es){
+			msg = new StringBuffer("账号：" + username + "，凭证过期！");
+		}
+		model.addAttribute("msg",msg);
 		return "shiro";
 	}
 

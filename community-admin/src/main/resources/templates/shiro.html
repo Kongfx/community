@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>shiro</title>
@@ -7,6 +7,7 @@
 <body>
     <div>
         <p>未登陆不应该来这的</p>
+        <div id="login-alert1"  th:text="${msg}"></div>
     </div>
 </body>
 </html>
