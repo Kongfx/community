@@ -11,11 +11,11 @@ import java.util.Date;
 
 /**
  * <p>
- * 
+ * 后台管理用户表
  * </p>
  *
  * @author kongfx
- * @since 2019-02-20
+ * @since 2019-02-21
  */
 @Data
 @Accessors(chain = true)
@@ -24,16 +24,16 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 主键
+     * 主键ID
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    private Integer id;
     /**
      * 账号
      */
     private String username;
     /**
-     * 姓名
+     * 名字
      */
     private String name;
     /**
@@ -41,19 +41,7 @@ public class User implements Serializable {
      */
     private Integer age;
     /**
-     * 手机号
-     */
-    private String phone;
-    /**
-     * 电子邮件
-     */
-    private String email;
-    /**
-     * 自我介绍
-     */
-    private String aboutme;
-    /**
-     * 经过MD5加密的密码
+     * 密码
      */
     private String password;
     /**
@@ -61,27 +49,27 @@ public class User implements Serializable {
      */
     private String salt;
     /**
-     * 头像图片
+     * 联系电话
      */
-    private String avatar;
+    private String phone;
     /**
-     * 1:普通用户，2:房产经纪人
+     * 备注
      */
-    private Integer type;
+    private String tips;
+    /**
+     * 状态 1:正常 2:禁用
+     */
+    private Integer state;
     /**
      * 创建时间
      */
-    @TableField("create_time")
-    private Date createTime;
+    @TableField("created_time")
+    private Date createdTime;
     /**
-     * 是否启用,1启用，0停用
+     * 更新时间
      */
-    private Integer enable;
-    /**
-     * 所属经纪机构
-     */
-    @TableField("agency_id")
-    private Integer agencyId;
+    @TableField("updated_time")
+    private Date updatedTime;
 
 
 }

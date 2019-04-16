@@ -13,10 +13,11 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
     content-type: text/html
+  resources:
+    static-locations: classpath:/templates/,classpath:/static/
 #  mvc:
 #    view:
 #      prefix: /templates
-
 
 # Comma-separated list of view names that should be excluded from resolution.
 #spring.thymeleaf.excluded-view-names=

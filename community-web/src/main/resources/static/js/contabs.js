@@ -110,6 +110,7 @@ $(function () {
         var dataUrl = $(this).attr('href'),
             dataIndex = $(this).data('index'),
             menuName = $.trim($(this).text()),
+            menuNames = $(this).parents().find("#side-menu .active .nav-label").text(),
             flag = true;
         if (dataUrl == undefined || $.trim(dataUrl).length == 0)return false;
 
@@ -134,7 +135,12 @@ $(function () {
 
         // 选项卡菜单不存在
         if (flag) {
-            var str = '<a href="javascript:;" class="active J_menuTab" data-id="' + dataUrl + '">' + menuName + ' <i class="fa fa-times-circle"></i></a>';
+            if(menuNames=="主页"){
+                var str = '<li class="active"><a href="" th:href="@{/toSyncData}">主页</a></li><li class="active"><a href="#">' + menuName + '</a> <span class="divider">/</span></li>';
+            }else{
+                var str = '<li class="active"><a href="" th:href="@{/toSyncData}">主页</a></li> <li class="active"><a href="#">' + menuNames + '</a> </li><li class="active"><a href="#">' + menuName + '</a> <span class="divider">/</span></li>';
+            }
+
             $('.J_menuTab').removeClass('active');
 
             // 添加选项卡对应的iframe
@@ -149,7 +155,7 @@ $(function () {
 //                layer.close(loading);
 //            });
             // 添加选项卡
-            $('.J_menuTabs .page-tabs-content').append(str);
+            $('.breadcrumb').html("").append(str);
             scrollToTab($('.J_menuTab.active'));
         }
         return false;
@@ -296,6 +302,7 @@ $(function () {
 
     // 关闭全部
     $('.J_tabCloseAll').on('click', function () {
+        debugger
         $('.page-tabs-content').children("[data-id]").not(":first").each(function () {
             $('.J_iframe[data-id="' + $(this).data('id') + '"]').remove();
             $(this).remove();

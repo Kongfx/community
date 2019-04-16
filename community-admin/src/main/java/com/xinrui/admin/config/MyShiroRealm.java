@@ -5,10 +5,12 @@ import com.xinrui.admin.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,20 +40,22 @@ public class MyShiroRealm extends AuthorizingRealm {
 		if (userInfo == null) {
 			throw new UnknownAccountException("账号不存在！");
 		}
+		//4)credentialsSalt盐值
+		ByteSource credentialsSalt =   ByteSource.Util.bytes(username+userInfo.getSalt());//使用用户名作为盐值
 		//交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
-//		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-//				userInfo, //用户
-//				userInfo.getPasswd(), //密码
-//				ByteSource.Util.bytes(userInfo.getCredentialsSalt()),//salt=username+salt
-//				getName()  //realm name
-//		);
-
-//		明文: 若存在，将此用户存放到登录认证info中，无需自己做密码对比，Shiro会为我们进行密码对比校验
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-				token.getPrincipal(), //用户名
+		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
+				token.getPrincipal(), //用户
 				userInfo.getPassword(), //密码
-                getName()  //realm name
-        );
+				credentialsSalt,//salt=username+salt
+				getName()  //realm name
+		);
+
+////		明文: 若存在，将此用户存放到登录认证info中，无需自己做密码对比，Shiro会为我们进行密码对比校验
+//        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
+//				token.getPrincipal(), //用户名
+//				userInfo.getPassword(), //密码
+//                getName()  //realm name
+//        );
 		return authenticationInfo;
 	}
 
@@ -91,7 +95,8 @@ public class MyShiroRealm extends AuthorizingRealm {
 //			}
 //		}
 		authorizationInfo.addRole("admin");
-		authorizationInfo.addStringPermission("admin");
+		authorizationInfo.addStringPermission("permission:admin");
+		authorizationInfo.addStringPermission("permission:aix");
 		return authorizationInfo;
 	}
 
@@ -100,9 +105,9 @@ public class MyShiroRealm extends AuthorizingRealm {
 	 */
 	@Override
 	public void setCredentialsMatcher(CredentialsMatcher credentialsMatcher) {
-//		HashedCredentialsMatcher md5CredentialsMatcher = new HashedCredentialsMatcher();
-//		md5CredentialsMatcher.setHashAlgorithmName(ShiroKit.HASH_ALGORITHM_NAME);
-//		md5CredentialsMatcher.setHashIterations(ShiroKit.HASH_ITERATIONS);
-//		super.setCredentialsMatcher(md5CredentialsMatcher);
+		HashedCredentialsMatcher md5CredentialsMatcher = new HashedCredentialsMatcher();
+		md5CredentialsMatcher.setHashAlgorithmName(ShiroKit.HASH_ALGORITHM_NAME);
+		md5CredentialsMatcher.setHashIterations(ShiroKit.HASH_ITERATIONS);
+		super.setCredentialsMatcher(md5CredentialsMatcher);
 	}
 }

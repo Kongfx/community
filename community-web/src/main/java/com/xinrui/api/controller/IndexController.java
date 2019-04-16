@@ -1,15 +1,17 @@
 package com.xinrui.api.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
 public class IndexController {
 
     @RequestMapping(value = "/index")
-    public String index(Model model){
-        return "index";
+    public ModelAndView index(Model model){
+        ModelAndView mv = new ModelAndView("index");
+        return mv;
     }
 
 }

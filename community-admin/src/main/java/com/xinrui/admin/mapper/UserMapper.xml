@@ -8,21 +8,18 @@
         <result column="username" property="username" />
         <result column="name" property="name" />
         <result column="age" property="age" />
-        <result column="phone" property="phone" />
-        <result column="email" property="email" />
-        <result column="aboutme" property="aboutme" />
         <result column="password" property="password" />
         <result column="salt" property="salt" />
-        <result column="avatar" property="avatar" />
-        <result column="type" property="type" />
-        <result column="create_time" property="createTime" />
-        <result column="enable" property="enable" />
-        <result column="agency_id" property="agencyId" />
+        <result column="phone" property="phone" />
+        <result column="tips" property="tips" />
+        <result column="state" property="state" />
+        <result column="created_time" property="createdTime" />
+        <result column="updated_time" property="updatedTime" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, username, name, age, phone, email, aboutme, password, salt, avatar, type, create_time AS createTime, enable, agency_id AS agencyId
+        id, username, name, age, password, salt, phone, tips, state, created_time AS createdTime, updated_time AS updatedTime
     </sql>
 
 </mapper>

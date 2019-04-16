@@ -34,7 +34,7 @@ public class UserTest {
 
 	@Test
 	public void testFindByName(){
-		User user = userService.findByUsername("hello6");
-		log.info(user.toString());
+		User user = userService.findByUsername("admin");
 	}
+
 }

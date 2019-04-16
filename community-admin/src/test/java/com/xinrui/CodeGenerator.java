@@ -64,7 +64,7 @@ public class CodeGenerator {
 //		.setSuperServiceClass("com.baomidou.mybatisplus.service.IService")
 //		.setSuperServiceImplClass("com.baomidou.mybatisplus.service.impl.ServiceImpl")
 //		.setSuperMapperClass("com.baomidou.mybatisplus.mapper.BaseMapper")
-		.setInclude(new String[]{"role"});//表名
+		.setInclude(new String[]{"permission","role_permission","user_role","user"});//表名
 		mpg.setStrategy(strategy);
 		//执行代码生成器
 		mpg.execute();
