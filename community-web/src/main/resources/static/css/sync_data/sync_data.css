@@ -1,0 +1,27 @@
+.control-label{
+    /*line-height: 35px;*/
+    float: left;
+}
+.control-text{
+    padding:20px 30px;
+    font-size: 18px;
+}
+.from-group-box{
+    width: 50%;
+    display: block;
+    float: left;
+    margin-bottom: 20px;
+}
+.form-horizontal  .form-groups{
+    border: 1px solid #ddd;
+    width: 90%;
+    margin: 15px auto;
+    padding:20px 0;
+}
+.form-groupView input{
+    border:none;
+}
+.breadcrumb li{
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
