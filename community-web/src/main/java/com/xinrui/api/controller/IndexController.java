@@ -8,10 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class IndexController {
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/index2")
     public ModelAndView index(Model model){
         ModelAndView mv = new ModelAndView("index");
         return mv;
     }
+
+
 
 }

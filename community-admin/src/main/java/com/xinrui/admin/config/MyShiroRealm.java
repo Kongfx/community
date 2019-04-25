@@ -11,12 +11,9 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 @Slf4j
 public class MyShiroRealm extends AuthorizingRealm {
-	private static final Logger _logger = LoggerFactory.getLogger(MyShiroRealm.class);
 	@Autowired
 	private UserService userService;
 	/**
@@ -30,7 +27,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
 			throws AuthenticationException {
-		_logger.info("MyShiroRealm.doGetAuthenticationInfo()");
+		log.info("MyShiroRealm.doGetAuthenticationInfo()");
 		UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
 		//获取用户的输入的账号.
 		String username = (String) token.getUsername();
@@ -81,7 +78,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 		 * 当放到缓存中时，这样的话，doGetAuthorizationInfo就只会执行一次了，
 		 * 缓存过期之后会再次执行。
 		 */
-		_logger.info("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
+		log.info("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 //		ManagerInfo managerInfo = (ManagerInfo) principals.getPrimaryPrincipal();
 //

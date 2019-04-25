@@ -16,7 +16,8 @@
         <module>community-core</module>
         <module>community-admin</module>
         <module>community-web</module>
-    </modules>
+		<module>admin-security</module>
+	</modules>
 	<packaging>pom</packaging>
 
 	<name>community</name>
@@ -96,11 +97,6 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>${fastjson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
