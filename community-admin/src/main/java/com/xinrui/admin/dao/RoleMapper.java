@@ -1,15 +1,15 @@
 package com.xinrui.admin.dao;
 
-import com.xinrui.admin.dto.Role;
+import com.xinrui.admin.entity.Role;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
  * <p>
- * 角色表 Mapper 接口
+ * ROLE Mapper 接口
  * </p>
  *
  * @author kongfx
- * @since 2019-02-20
+ * @since 2019-04-28
  */
 public interface RoleMapper extends BaseMapper<Role> {
 

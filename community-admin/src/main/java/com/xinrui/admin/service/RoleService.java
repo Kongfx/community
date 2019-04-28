@@ -1,15 +1,15 @@
 package com.xinrui.admin.service;
 
-import com.xinrui.admin.dto.Role;
+import com.xinrui.admin.entity.Role;
 import com.baomidou.mybatisplus.service.IService;
 
 /**
  * <p>
- * 角色表 服务类
+ * ROLE 服务类
  * </p>
  *
  * @author kongfx
- * @since 2019-02-20
+ * @since 2019-04-28
  */
 public interface RoleService extends IService<Role> {
 

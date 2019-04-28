@@ -15,8 +15,8 @@ spring:
     content-type: text/html
   datasource:
       url: jdbc:mysql://127.0.0.1:3306/community_admin?useSSL=false&autoReconnect=true&tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8
-      username: root
-      password: root@mysql
+      username: kong
+      password: kong@mysql
       driver-class-name: com.mysql.jdbc.Driver
 eureka:
   client:
@@ -26,8 +26,8 @@ eureka:
     prefer-ip-address: true
 #MybatiesPlus Config
 mybatis-plus:
-  mapper-locations: classpath*:com/xinrui/admin/mapper/*.xml
-  type-aliases-package: com.xinrui.admin.dto
+  mapper-locations: classpath*:/mapper/*.xml
+  type-aliases-package: com.xinrui.admin.entity
   global-config:
     id-type: 0
     db-column-underline: true

@@ -15,7 +15,7 @@
  */
 package com.xinrui.admin.config;
 
-import com.xinrui.admin.dto.User;
+import com.xinrui.admin.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;

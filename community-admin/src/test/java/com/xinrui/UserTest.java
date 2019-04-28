@@ -1,6 +1,8 @@
 package com.xinrui;
 
-import com.xinrui.admin.dto.User;
+import com.xinrui.admin.config.ShiroKit;
+import com.xinrui.admin.dao.UserMapper;
+import com.xinrui.admin.entity.User;
 import com.xinrui.admin.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -24,6 +26,17 @@ import static org.junit.Assert.assertTrue;
 @RunWith(SpringRunner.class)
 @Slf4j
 public class UserTest {
+
+	public static void main(String[] args) {
+//		User user = new User();
+//		user.setLoginName("admin");
+//		String salt = ShiroKit.getRandomSalt(5);
+//		user.setSalt(salt);
+//		user.setStatus(0);
+//		user.setPassword(ShiroKit.md5("123456",salt));
+//		System.out.println("user:"+user);
+	}
+
 	@Before
 	public void shouldAnswerWithTrue()
 	{
@@ -31,10 +44,27 @@ public class UserTest {
 	}
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private UserMapper userMapper;
+
+	@Test
+	public void addAdminUserInfo(){
+		User user = new User();
+		user.setLoginName("kongfx");
+		String salt = ShiroKit.getRandomSalt(5);
+		user.setSalt(salt);
+		user.setStatus(0);
+		user.setMobile(133555566666L);
+		user.setPassword(ShiroKit.md5("123456","admin"+salt));
+		System.out.println("user:"+user);
+		userService.insert(user);
+	}
+
 
 	@Test
 	public void testFindByName(){
-		User user = userService.findByUsername("admin");
+		User user = userMapper.selectUserAndRolesByName("admin");
+		System.out.println(user);
 	}
 
 }

@@ -36,8 +36,8 @@ public class CodeGenerator {
 		//数据源配置
 		DataSourceConfig dsc = new DataSourceConfig();
 		dsc.setUrl("jdbc:mysql://127.0.0.1:3306/community_admin?useSSL=false&autoReconnect=true&tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8")
-		.setUsername("root")
-		.setPassword("root@mysql")
+		.setUsername("kong")
+		.setPassword("kong@mysql")
 		.setDriverName("com.mysql.jdbc.Driver")
 		.setDbType(DbType.MYSQL);
 		mpg.setDataSource(dsc);
@@ -48,7 +48,7 @@ public class CodeGenerator {
 		.setService("service")
 		.setServiceImpl("service.impl")
 		.setMapper("dao")
-		.setEntity("dto")
+		.setEntity("entity")
 		.setXml("mapper");
 		mpg.setPackageInfo(pc);
 
@@ -64,7 +64,7 @@ public class CodeGenerator {
 //		.setSuperServiceClass("com.baomidou.mybatisplus.service.IService")
 //		.setSuperServiceImplClass("com.baomidou.mybatisplus.service.impl.ServiceImpl")
 //		.setSuperMapperClass("com.baomidou.mybatisplus.mapper.BaseMapper")
-		.setInclude(new String[]{"permission","role_permission","user_role","user"});//表名
+		.setInclude(new String[]{"user","role","dept","menu"});//表名
 		mpg.setStrategy(strategy);
 		//执行代码生成器
 		mpg.execute();

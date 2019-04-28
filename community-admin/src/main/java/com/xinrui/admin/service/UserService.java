@@ -1,19 +1,17 @@
 package com.xinrui.admin.service;
 
-import com.xinrui.admin.dto.User;
+import com.xinrui.admin.entity.User;
 import com.baomidou.mybatisplus.service.IService;
 
 /**
  * <p>
- * 后台管理用户表 服务类
+ * User basic infomation 服务类
  * </p>
  *
  * @author kongfx
- * @since 2019-02-21
+ * @since 2019-04-28
  */
 public interface UserService extends IService<User> {
 
 	User findByUsername(String username);
-
-	void addAge();
 }

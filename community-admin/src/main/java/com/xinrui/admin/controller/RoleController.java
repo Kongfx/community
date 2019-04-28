@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 角色表 前端控制器
+ * ROLE 前端控制器
  * </p>
  *
  * @author kongfx
- * @since 2019-02-20
+ * @since 2019-04-28
  */
 @RestController
 @RequestMapping("/role")

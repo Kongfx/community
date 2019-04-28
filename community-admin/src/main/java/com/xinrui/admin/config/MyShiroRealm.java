@@ -1,6 +1,6 @@
 package com.xinrui.admin.config;
 
-import com.xinrui.admin.dto.User;
+import com.xinrui.admin.entity.User;
 import com.xinrui.admin.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
@@ -38,7 +38,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 			throw new UnknownAccountException("账号不存在！");
 		}
 		//4)credentialsSalt盐值
-		ByteSource credentialsSalt =   ByteSource.Util.bytes(username+userInfo.getSalt());//使用用户名作为盐值
+		ByteSource credentialsSalt =   ByteSource.Util.bytes(username + userInfo.getSalt());//使用用户名作为盐值
 		//交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
 		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
 				token.getPrincipal(), //用户
@@ -80,8 +80,8 @@ public class MyShiroRealm extends AuthorizingRealm {
 		 */
 		log.info("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-//		ManagerInfo managerInfo = (ManagerInfo) principals.getPrimaryPrincipal();
-//
+		User user = (User) principals.getPrimaryPrincipal();
+//		UserInfo userInfo =
 //		//设置相应角色的权限信息
 //		for (SysRole role : managerInfo.getRoles()) {
 //			//设置角色
