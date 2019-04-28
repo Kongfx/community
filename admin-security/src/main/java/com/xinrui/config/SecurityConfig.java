@@ -6,10 +6,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+
+import javax.sql.DataSource;
 
 /**
  * @ClassName SecurityConfig
@@ -22,14 +26,25 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	protected AuthenticationSuccessHandler myAuthenticationSuccessHandler;
-
 	@Autowired
 	protected AuthenticationFailureHandler myAuthenticationFailHander;
+	@Autowired
+	private DataSource dataSource;
+	@Autowired
+	protected UserDetailsService userDetailsService;
+
 
 	@Bean
 	public PasswordEncoder passwordEncoder(){
 		//这个应该是自己定义的实现了PasswordEncoder 的密码加密逻辑的类
 		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public JdbcTokenRepositoryImpl tokenRepository(){
+		JdbcTokenRepositoryImpl j = new JdbcTokenRepositoryImpl();
+		j.setDataSource(dataSource);
+		return j;
 	}
 
 	@Override
@@ -47,11 +62,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.successHandler(myAuthenticationSuccessHandler)
 				.failureHandler(myAuthenticationFailHander)
 				.and()
-				.authorizeRequests()
-      				.antMatchers("/img/**,/templates/**","/static/**","/toLogin").permitAll()
-				.anyRequest()
-				.authenticated()
+			.rememberMe()
+				.tokenRepository(tokenRepository())
+				.tokenValiditySeconds(60*60*24*2)
+				.userDetailsService(userDetailsService)
 				.and()
-				.csrf().disable();
+			.authorizeRequests()
+				.antMatchers("/img/**,/templates/**","/static/**","/toLogin","/login/**").permitAll()
+			.anyRequest()
+			.authenticated()
+			.and()
+			.csrf().disable();
 	}
 }

@@ -1,7 +1,6 @@
 package com.xinrui.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,8 +21,13 @@ public class SecurityController {
 		return new ModelAndView("login");
 	}
 
-	@PostMapping("/auth/from")
-	public ModelAndView login(){
-		return new ModelAndView("main");
+	@RequestMapping("/login/error")
+	public ModelAndView loginError(){
+		return new ModelAndView("login_error");
+	}
+
+	@RequestMapping("/login/success")
+	public ModelAndView loginSuccess(){
+		return new ModelAndView("index222");
 	}
 }

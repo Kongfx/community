@@ -21,7 +21,7 @@ import java.io.IOException;
  * @Version 1.0
  */
 @Component("myAuthenticationFailHander")
-public class MyAuthenticationFailHander extends SimpleUrlAuthenticationFailureHandler {
+public class MyAuthenticationFailHandler extends SimpleUrlAuthenticationFailureHandler {
 
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -35,6 +35,8 @@ public class MyAuthenticationFailHander extends SimpleUrlAuthenticationFailureHa
 			response.setContentType("application/json;charset=UTF-8");
 			response.getWriter().write(objectMapper.writeValueAsString(exception.getMessage()));
 		}else{
+			//TODO:这里先设置一个默认的登陆失败页面，后期需要修改登陆方法 以json的方式返回给登陆调用方
+			super.setDefaultFailureUrl("/login/error"); // 登录失败，跳转到登录界面
 			super.onAuthenticationFailure(request, response, exception);
 		}
 	}

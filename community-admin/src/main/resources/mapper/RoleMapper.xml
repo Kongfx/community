@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinrui.admin.dao.RoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xinrui.admin.entity.Role">
+        <id column="ID" property="id" />
+        <result column="ROLE_NAME" property="roleName" />
+        <result column="ROLE_SING" property="roleSing" />
+        <result column="REMARK" property="remark" />
+        <result column="STATUS" property="status" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="CREATE_BY" property="createBy" />
+        <result column="LASTUPDATE_TIME" property="lastupdateTime" />
+        <result column="LASTUPDATE_BY" property="lastupdateBy" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID AS id, ROLE_NAME AS roleName, ROLE_SING AS roleSing, REMARK AS remark, STATUS AS status, CREATE_TIME AS createTime, CREATE_BY AS createBy, LASTUPDATE_TIME AS lastupdateTime, LASTUPDATE_BY AS lastupdateBy
+    </sql>
+
+</mapper>

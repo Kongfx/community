@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinrui.admin.dao.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xinrui.admin.entity.User">
+        <id column="ID" property="id" />
+        <result column="LOGIN_NAME" property="loginName" />
+        <result column="SALT" property="salt" />
+        <result column="PASSWORD" property="password" />
+        <result column="MOBILE" property="mobile" />
+        <result column="STATUS" property="status" />
+        <result column="LOGIN_ERR_TIMES" property="loginErrTimes" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="CREATE_BY" property="createBy" />
+        <result column="LASTUPDATE_TIME" property="lastupdateTime" />
+        <result column="LASTUPDATE_BY" property="lastupdateBy" />
+    </resultMap>
+
+    <resultMap type="com.xinrui.admin.entity.User" id="UserResultMap" extends="BaseResultMap">
+        <collection property="roles" ofType="com.xinrui.admin.entity.Role">
+            <id column="ID" property="id" />
+            <result column="ROLE_NAME" property="roleName" />
+            <result column="ROLE_SING" property="roleSing" />
+            <result column="REMARK" property="remark" />
+            <result column="STATUS" property="status" />
+            <result column="CREATE_TIME" property="createTime" />
+            <result column="CREATE_BY" property="createBy" />
+            <result column="LASTUPDATE_TIME" property="lastupdateTime" />
+            <result column="LASTUPDATE_BY" property="lastupdateBy" />
+        </collection>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID AS id, LOGIN_NAME AS loginName, SALT AS salt, PASSWORD AS password, MOBILE AS mobile, STATUS AS status, LOGIN_ERR_TIMES AS loginErrTimes, CREATE_TIME AS createTime, CREATE_BY AS createBy, LASTUPDATE_TIME AS lastupdateTime, LASTUPDATE_BY AS lastupdateBy
+    </sql>
+
+    <select id="selectUserAndRolesByName" resultMap="UserResultMap" parameterType="String">
+        select r.*,u.* from user u
+        LEFT JOIN user_role ur on ur.USER_ID = u.id
+        LEFT JOIN role r on ur.ROLE_ID = r.ID
+        WHERE LOGIN_NAME = #{username};
+    </select>
+
+</mapper>

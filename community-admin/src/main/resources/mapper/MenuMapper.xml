@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinrui.admin.dao.MenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xinrui.admin.entity.Menu">
+        <id column="ID" property="id" />
+        <result column="P_ID" property="pId" />
+        <result column="MENU_NAME" property="menuName" />
+        <result column="TYPE" property="type" />
+        <result column="URL" property="url" />
+        <result column="PERMISSION" property="permission" />
+        <result column="ICON" property="icon" />
+        <result column="ORDER_NUM" property="orderNum" />
+        <result column="STATUS" property="status" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="CREATE_BY" property="createBy" />
+        <result column="LASTUPDATE_TIME" property="lastupdateTime" />
+        <result column="LASTUPDATE_BY" property="lastupdateBy" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID AS id, P_ID AS pId, MENU_NAME AS menuName, TYPE AS type, URL AS url, PERMISSION AS permission, ICON AS icon, ORDER_NUM AS orderNum, STATUS AS status, CREATE_TIME AS createTime, CREATE_BY AS createBy, LASTUPDATE_TIME AS lastupdateTime, LASTUPDATE_BY AS lastupdateBy
+    </sql>
+
+</mapper>

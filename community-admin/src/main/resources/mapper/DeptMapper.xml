@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinrui.admin.dao.DeptMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xinrui.admin.entity.Dept">
+        <id column="ID" property="id" />
+        <result column="DEPT_NAME" property="deptName" />
+        <result column="DEPT_SING" property="deptSing" />
+        <result column="REMARK" property="remark" />
+        <result column="P_DEPT_ID" property="pDeptId" />
+        <result column="STATUS" property="status" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="CREATE_BY" property="createBy" />
+        <result column="LASTUPDATE_TIME" property="lastupdateTime" />
+        <result column="LASTUPDATE_BY" property="lastupdateBy" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID AS id, DEPT_NAME AS deptName, DEPT_SING AS deptSing, REMARK AS remark, P_DEPT_ID AS pDeptId, STATUS AS status, CREATE_TIME AS createTime, CREATE_BY AS createBy, LASTUPDATE_TIME AS lastupdateTime, LASTUPDATE_BY AS lastupdateBy
+    </sql>
+
+</mapper>

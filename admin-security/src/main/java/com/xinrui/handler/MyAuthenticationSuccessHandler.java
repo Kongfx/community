@@ -33,6 +33,8 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
 			response.setContentType("application/json;charset=UTF-8");
 			response.getWriter().write(objectMapper.writeValueAsString(authentication));
 		}else{
+			//TODO:这里先设置一个默认的登陆失败页面，后期需要修改登陆方法 以json的方式返回给登陆调用方
+			super.setDefaultTargetUrl("/login/success"); // 设置默认登陆成功的跳转地址
 			super.onAuthenticationSuccess(request, response, authentication);
 		}
 	}
