@@ -1,18 +1,14 @@
 package com.xinrui.admin.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.enums.IdType;
-import java.io.Serializable;
-
-import com.baomidou.mybatisplus.annotations.Version;
-
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Set;
 
 /**
  * <p>
@@ -74,5 +70,9 @@ public class Role implements Serializable {
     @TableField("LASTUPDATE_BY")
     private Long lastupdateBy;
 
+    /**
+     * 角色所属菜单
+     */
+    private Set<Menu> menus;
 
 }

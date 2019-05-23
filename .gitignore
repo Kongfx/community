@@ -35,3 +35,5 @@ eureka-server/target/
 provider-user/target/
 community-web/target/
 community-admin/target/
+/community-admin/target/
+!/community-admin/target/

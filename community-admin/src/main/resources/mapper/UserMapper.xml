@@ -28,6 +28,21 @@
             <result column="CREATE_BY" property="createBy" />
             <result column="LASTUPDATE_TIME" property="lastupdateTime" />
             <result column="LASTUPDATE_BY" property="lastupdateBy" />
+            <collection property="menus" ofType="com.xinrui.admin.entity.Menu">
+                <id column="ID" property="id" />
+                <result column="P_ID" property="pId" />
+                <result column="MENU_NAME" property="menuName" />
+                <result column="TYPE" property="type" />
+                <result column="URL" property="url" />
+                <result column="PERMISSION" property="permission" />
+                <result column="ICON" property="icon" />
+                <result column="ORDER_NUM" property="orderNum" />
+                <result column="STATUS" property="status" />
+                <result column="CREATE_TIME" property="createTime" />
+                <result column="CREATE_BY" property="createBy" />
+                <result column="LASTUPDATE_TIME" property="lastupdateTime" />
+                <result column="LASTUPDATE_BY" property="lastupdateBy" />
+            </collection>
         </collection>
     </resultMap>
 
@@ -37,10 +52,12 @@
     </sql>
 
     <select id="selectUserAndRolesByName" resultMap="UserResultMap" parameterType="String">
-        select r.*,u.* from user u
-        LEFT JOIN user_role ur on ur.USER_ID = u.id
-        LEFT JOIN role r on ur.ROLE_ID = r.ID
-        WHERE LOGIN_NAME = #{username};
+        SELECT R.*,U.* FROM USER U
+        LEFT JOIN USER_ROLE UR ON UR.USER_ID = U.ID
+        LEFT JOIN ROLE R ON UR.ROLE_ID = R.ID
+        LEFT JOIN ROLE_MENU RM ON RM.ROLE_ID = R.ID
+        LEFT JOIN  MENU M ON RM.MENU_ID = M.ID
+        WHERE LOGIN_NAME = #{USERNAME};
     </select>
 
 </mapper>

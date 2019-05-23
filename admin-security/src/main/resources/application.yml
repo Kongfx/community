@@ -16,7 +16,19 @@ spring:
   resources:
     static-locations: classpath:/templates/,classpath:/static/
   datasource:
-      url: jdbc:mysql://127.0.0.1:3306/springboot?useSSL=false&autoReconnect=true&tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://127.0.0.1:3306/community_admin?useSSL=false&autoReconnect=true&tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8
       username: kong
       password: kong@mysql
       driver-class-name: com.mysql.jdbc.Driver
+#MybatiesPlus Config
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  type-aliases-package: com.xinrui.entity
+  global-config:
+    id-type: 0
+    db-column-underline: true
+    refresh-mapper: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    lazy-loading-enabled: true

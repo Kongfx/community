@@ -1,5 +1,7 @@
 package com.xinrui.admin.config;
 
+import com.xinrui.admin.entity.Menu;
+import com.xinrui.admin.entity.Role;
 import com.xinrui.admin.entity.User;
 import com.xinrui.admin.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -80,20 +82,19 @@ public class MyShiroRealm extends AuthorizingRealm {
 		 */
 		log.info("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-		User user = (User) principals.getPrimaryPrincipal();
-//		UserInfo userInfo =
-//		//设置相应角色的权限信息
-//		for (SysRole role : managerInfo.getRoles()) {
-//			//设置角色
-//			authorizationInfo.addRole(role.getRole());
-//			for (Permission p : role.getPermissions()) {
-//				//设置权限
-//				authorizationInfo.addStringPermission(p.getPermission());
-//			}
-//		}
-		authorizationInfo.addRole("admin");
-		authorizationInfo.addStringPermission("permission:admin");
-		authorizationInfo.addStringPermission("permission:aix");
+		User userInfo = (User) principals.getPrimaryPrincipal();
+		//设置相应角色的权限信息
+		for (Role role : userInfo.getRoles()) {
+			//设置角色
+			authorizationInfo.addRole(role.getRoleSing());
+			for (Menu m : role.getMenus()) {
+				//设置权限
+				authorizationInfo.addStringPermission(m.getPermission());
+			}
+		}
+//		authorizationInfo.addRole("admin");
+//		authorizationInfo.addStringPermission("permission:admin");
+//		authorizationInfo.addStringPermission("permission:aix");
 		return authorizationInfo;
 	}
 

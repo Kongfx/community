@@ -9,10 +9,6 @@ eureka:
       defaultZone: http://user:123@localhost:1111/eureka/
   instance:
     prefer-ip-address: true
-security:
-  user:
-    password: 123
-    name: user
 zuul:
   routes:
     provider-user1: /pro/** #给制定的服务做映射 当前给provider-user1 添加映射为abc

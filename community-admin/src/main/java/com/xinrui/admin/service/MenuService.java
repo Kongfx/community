@@ -1,7 +1,7 @@
 package com.xinrui.admin.service;
 
-import com.xinrui.admin.entity.Menu;
 import com.baomidou.mybatisplus.service.IService;
+import com.xinrui.admin.entity.Menu;
 
 /**
  * <p>
@@ -13,4 +13,8 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface MenuService extends IService<Menu> {
 
+	default void forEach() {
+		System.out.println();
+	}
 }
+
