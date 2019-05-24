@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinrui.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xinrui.entity.User">
+        <id column="USER_ID" property="userId" />
+        <result column="USER_NAME" property="userName" />
+        <result column="SALT" property="salt" />
+        <result column="PASSWORD" property="password" />
+        <result column="MOBILE" property="mobile" />
+        <result column="STATUS" property="status" />
+        <result column="LOGIN_ERR_TIMES" property="loginErrTimes" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="CREATE_BY" property="createBy" />
+        <result column="LASTUPDATE_TIME" property="lastupdateTime" />
+        <result column="LASTUPDATE_BY" property="lastupdateBy" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        USER_ID AS userId, USER_NAME AS userName, SALT AS salt, PASSWORD AS password, MOBILE AS mobile, STATUS AS status, LOGIN_ERR_TIMES AS loginErrTimes, CREATE_TIME AS createTime, CREATE_BY AS createBy, LASTUPDATE_TIME AS lastupdateTime, LASTUPDATE_BY AS lastupdateBy
+    </sql>
+    <select id="selectUserAndRolesByName" resultMap="BaseResultMap" parameterType="String">
+        SELECT * FROM USER U
+        WHERE USER_NAME = #{userName};
+    </select>
+
+</mapper>
