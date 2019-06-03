@@ -1,0 +1,22 @@
+server:
+  port: 8097
+spring:
+  application:
+    name: admin-security
+  thymeleaf:
+#    mode: HTML5
+    mode: LEGACYHTML5
+    cache: false
+    check-template-location: true
+    encoding: utf-8
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+    content-type: text/html
+  resources:
+    static-locations: classpath:/templates/,classpath:/static/
+  datasource:
+      url: jdbc:mysql://127.0.0.1:3306/springboot?useSSL=false&autoReconnect=true&tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8
+      username: kong
+      password: kong@mysql
+      driver-class-name: com.mysql.jdbc.Driver

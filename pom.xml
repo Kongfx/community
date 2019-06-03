@@ -18,6 +18,7 @@
         <module>community-web</module>
 		<module>admin-security</module>
 		<module>security-oauth</module>
+		<module>concurrency</module>
 	</modules>
 	<packaging>pom</packaging>
 
