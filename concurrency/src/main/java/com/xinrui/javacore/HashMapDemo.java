@@ -11,6 +11,7 @@ import java.util.Objects;
  */
 public class HashMapDemo {
 	public static void main(String[] args) {
+
 		String key = "key";
 		String value = "Value";
 		int hashCode = Objects.hashCode(key) ^ Objects.hashCode(value);
