@@ -1,5 +1,8 @@
 package com.xinrui.leetcode;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class FindMaxConsecutiveOnes {
 	public static void main(String[] args) {
 		int[] nums = {1,1,0,1,0,1,1,1,1,1,1,0};
@@ -19,6 +22,7 @@ public class FindMaxConsecutiveOnes {
         	}
         }
 		if(temp>max) max=temp;
+        log.info("max={}",max);
     	return max;
     }
 

@@ -96,14 +96,6 @@ public class ShiroConfig {
 		return hashedCredentialsMatcher;
 	}
 
-    //注入缓存
-//    @Bean
-//    public EhCacheManager ehCacheManager(){
-//        System.out.println("ShiroConfiguration.getEhCacheManager()执行");
-//        EhCacheManager cacheManager=new EhCacheManager();
-//        cacheManager.setCacheManagerConfigFile("classpath:config/ehcache-shiro.xml");
-//        return cacheManager;
-//    }
 	/**
 	 * cookie管理对象;
 	 *
@@ -111,7 +103,6 @@ public class ShiroConfig {
 	 */
 	@Bean
 	public CookieRememberMeManager rememberMeManager() {
-		//System.out.println("ShiroConfiguration.rememberMeManager()");
 		CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
 		cookieRememberMeManager.setCookie(rememberMeCookie());
 		return cookieRememberMeManager;
@@ -123,7 +114,6 @@ public class ShiroConfig {
 	 */
 	@Bean
 	public SimpleCookie rememberMeCookie() {
-		//System.out.println("ShiroConfiguration.rememberMeCookie()");
 		//这个参数是cookie的名称，对应前端的checkbox的name = rememberMe
 		SimpleCookie simpleCookie = new SimpleCookie("rememberMe");
 		//<!-- 记住我cookie生效时间30天 ,单位秒;-->

@@ -18,7 +18,7 @@ public class HashMapDemo {
 		System.out.println(hashCode);
 
 		Integer a = 1271,b=1271;
-		System.out.println(a==b);
+		System.out.println(a == b);
 
 		try{
 			throw new NullPointerException();
